@@ -21,6 +21,7 @@ static PyObject *THPVariable_pynew(PyTypeObject* type, PyObject *args, PyObject 
   char requires_grad = 0;
   const char* name = nullptr;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays)
   const char *accepted_args[] = {"data", "requires_grad", "volatile", "_grad_fn", "name", nullptr};
   if (!PyArg_ParseTupleAndKeywords(args, kwds, "|ObbOz", (char**)accepted_args,
       &data, &requires_grad, &is_volatile, &grad_fn, &name))
@@ -88,6 +89,7 @@ static PyObject *THPVariable_pynew(PyTypeObject* type, PyObject *args, PyObject 
   END_HANDLE_TH_ERRORS
 }
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 PyTypeObject THPLegacyVariableType = {
   PyVarObject_HEAD_INIT(nullptr, 0)
   "torch._C._LegacyVariableBase",              /* tp_name */
